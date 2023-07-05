@@ -1,0 +1,161 @@
+
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+void main() {
+  runApp( MyApp());
+}
+//flutter playlist 48 - 51
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+      ),
+      home:  MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  var emailText= TextEditingController();
+
+  var password= TextEditingController();
+
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    var time =DateTime.now();
+
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('login'),
+        ),
+        body:
+        /* 
+// loging screen taking input from user.
+        Center(
+
+            child: Container(
+              width: 300,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextField(
+                      controller: emailText ,
+                      keyboardType: TextInputType.emailAddress,
+                      //enabled: false,
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(color: Colors.deepPurple,width: 3)
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(
+                            color: Colors.blue,width: 2
+                          )
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(color: Colors.red)
+                        ),
+                        suffixText: "email exist",
+                        suffixIcon: IconButton(
+                          icon: Icon(Icons.remove_red_eye_rounded),
+                          onPressed: (){
+
+                          },
+                        ),
+                        prefixIcon: Icon(Icons.email),
+                        hintText: "enter email"
+
+
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                    TextField(
+                      controller: password,
+                      obscureText: true,
+                      obscuringCharacter: "*",
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                      prefixIcon: Icon(Icons.password_outlined),
+                      suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                      hintText: "enter password"
+                      ),
+
+                    ),
+                    SizedBox(height: 20,),
+                    ElevatedButton(onPressed: (){
+                      String vemail = emailText.text.toString();
+                      String vpass = password.text.toString();
+                      print("email:$vemail, pass: $vpass");
+
+                    }, child: Text('login'))
+                  ],
+                )
+            )
+        )
+
+         */
+// date time show & piker 
+      Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("${DateFormat('jms').format(time)}"),
+            //Text("${time.hour}:${time.minute}"),
+            ElevatedButton(onPressed: (){
+              setState(() {
+
+              });
+
+            }, child: Text("current time")),
+
+            SizedBox(height: 30),
+
+            Text("select date"),
+            ElevatedButton(onPressed: () async {
+              DateTime? datepicked = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime.now());
+
+              if(datepicked!=null){
+                print("date selected: ${datepicked.day}-${datepicked.month}-${datepicked.year}");
+              }
+            }, child: Text('show')),
+            SizedBox(height: 10),
+            ElevatedButton(onPressed: () async {
+              TimeOfDay? timepiked= await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                  initialEntryMode: TimePickerEntryMode.input,
+              );
+              
+              if(timepiked!=null){
+                print("time selected: ${timepiked.hour}:${timepiked.minute}");
+              }
+            },
+                child: Text('select time')),
+
+          ],
+        ),
+      )
+    );
+  }
+}
