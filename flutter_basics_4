@@ -1,0 +1,181 @@
+
+import 'package:flutter/material.dart';
+import 'package:second/util.dart';
+ void main(){
+   runApp(flutterapp());
+ }
+// flutter series 39 to 46
+
+ class flutterapp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "flutter app",
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.lightGreen,
+        textTheme: const TextTheme(
+          headline1:  TextStyle( fontSize: 21,fontWeight: FontWeight.bold,color: Colors.black),
+          subtitle1: TextStyle(fontStyle: FontStyle.italic,fontSize: 11,fontWeight: FontWeight.w500),
+        )
+      ),
+      home: dashboard(),
+    );
+  }
+ }
+
+ class dashboard extends StatelessWidget{
+   @override
+   var arrName=['assets/images/aaa.jpg','assets/images/qwe.jpg','assets/images/asd.jpg'];
+
+  Widget build(BuildContext context) {
+     return Scaffold(
+      appBar: AppBar(
+        title: Text("Inbox"),
+      ),
+      body: /*   
+      // container decoration
+      Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.blue.shade50,
+        child: Center(
+          child: Container(
+            width: 300,
+            height: 300,
+            decoration: BoxDecoration(
+              color: Colors.blueGrey,
+              borderRadius: BorderRadius.all(Radius.elliptical(180, 140)),
+              //shape: BoxShape.circle
+                border: Border.all(
+                  width: 3,
+                  color: Colors.black45,
+                ),
+                boxShadow:[
+                  BoxShadow(
+                    blurRadius: 11,
+                    color: Colors.grey,
+                    spreadRadius: 8,
+                  )
+                ],
+            ),
+          ),
+        ),
+      ),
+      */
+
+      /* 
+      // expanded and flex
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        //crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 50,
+            height: 100,
+            color: Colors.red,
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              width: 50,
+              height: 100,
+              color: Colors.yellow,
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+             width: 50,
+             height: 100,
+             color: Colors.green,
+           ),
+          ),
+          Container(
+            width: 50,
+            height: 100,
+            color: Colors.blue,
+          ),
+        ],
+      )
+    */
+
+      /*   Container(  // margin & padding
+
+          margin: EdgeInsets.all(8),
+          color: Colors.lightGreen,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("apurv jagtap", style: TextStyle(fontSize: 20),),
+          ),
+        ),
+      */
+
+/*
+// listTile
+      ListView.separated(itemBuilder: (context, index) {
+        return ListTile(
+          leading: Text('$index'),
+          title: Text(arrName[index]),
+          subtitle: Text('Number'),
+          trailing: Icon(Icons.add),
+        );
+      },
+      itemCount: arrName.length,
+        separatorBuilder: (BuildContext context, int index) {
+        return Divider(height: 30,thickness: 3,);  },
+      ),
+*/
+/*  
+// circle avatar
+      Center(
+       child: CircleAvatar(
+         //backgroundImage: AssetImage('assets/images/qwe.jpg'),
+         child: Container(
+           width: 70,
+           height: 70,
+           child: Column(
+             children: [
+               Container( width:50,height:50,child: Image.asset('assets/images/aaa.jpg')),
+               Text("apurv"),
+             ],
+           ),
+         ),
+         backgroundColor: Colors.cyan,
+         maxRadius: 70,
+       ),
+     ),
+*/
+
+ /*  
+ // text style and themes.
+      Column(
+       children: [
+         Text("Text 1",style: Theme.of(context).textTheme.headline1),
+         Text("Text 2",style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue)),
+         Text("Text 3",style: Theme.of(context).textTheme.headline1),
+         Text("Text 4",style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.blue)),
+         Text("dsa",style: m11(),),
+         Text("bhunji",style: m50(),)
+       ],
+     ),
+*/
+     
+         //card widget
+       Center(
+         child:  Card(
+           color: Colors.cyan,
+           elevation: 8,
+           shadowColor: Colors.blue,
+           child: Padding(
+             padding:  EdgeInsets.all(8.0),
+             child: Text("apurv jagtaap"),
+           ),
+         ),
+       )
+
+
+
+    );
+  }
+ }
