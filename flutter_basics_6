@@ -1,0 +1,238 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+// 52-62
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'fourth'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  callBack(){
+    print('hey!..');
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+  var arrColor= [Colors.orange,
+    Colors.brown,
+  Colors.yellow,
+  Colors.blueAccent,
+  Colors.red,
+  Colors.green,
+  Colors.amber,
+  Colors.deepPurple];
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(widget.title),
+      ),
+      body:
+      /*
+      // grid view count create a grid with specific count on number,
+       //cross axis & main axis spacing work as padding for particular grid
+      GridView.count(crossAxisCount: 3,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+        children: [
+          Container(color: arrColor[0] ),
+          Container(color: arrColor[1] ),
+          Container(color: arrColor[2] ),
+          Container(color: arrColor[3] ),
+          Container(color: arrColor[4] ),
+          Container(color: arrColor[5] ),
+          Container(color: arrColor[6] ),
+          Container(color: arrColor[7] ),
+        ],
+      )*/
+
+
+/*
+//builder build a grid on given data
+
+      GridView.builder(itemBuilder: (context,index){
+        return Container(
+          color: arrColor[index],
+        );
+      }, itemCount: arrColor.length, gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+        crossAxisSpacing: 9,
+        mainAxisSpacing: 2
+
+           ),)
+
+
+ */
+
+    /*    call back function.
+        ElevatedButton(
+             onPressed: callBack,
+             child: const Text('click'),
+        )
+*/
+
+
+     /*   // stack widget to arrange widgets in stack order..
+      Stack(
+       children: [
+         Container(
+
+           width: 400,
+           height: 400,
+           color: Colors.deepPurple,
+         ),
+         Container(
+           margin: EdgeInsets.all(120) ,
+             width: 300,
+             height: 300,
+             color: Colors.amber,
+           ),
+
+       ],
+     )
+*/
+
+/*
+        // wrap widget = if row /column overflowed then this widget can be used.
+      Container(
+        width: double.infinity,
+        child: Wrap(
+          direction: Axis.vertical,
+          alignment: WrapAlignment.center,
+          spacing: 11,
+          runSpacing: 11,
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.amber,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.amber,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.amber,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.amber,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.amber,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.amber,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.amber,
+            ),
+          ],
+        ),
+      )
+*/
+
+    /*    // type of sized box expand shrink and square.
+    Center(
+      child: SizedBox(
+
+        child: ElevatedButton(
+          onPressed: () {  },
+          child: Text('we',style: TextStyle(color: Colors.black),),
+        ),
+      ),
+    )
+*/
+
+        /*
+       RichText(
+         text: const TextSpan(style: TextStyle(fontSize: 20,color: Colors.blue),
+           children: [
+             TextSpan(
+               text: 'hello',
+             ),
+             TextSpan(
+               text: ' world!',style: TextStyle(fontSize: 35,color: Colors.black,fontWeight: FontWeight.bold)
+             ),
+
+           ]
+         ),
+       )
+*/
+
+        /*
+// font awesome icon
+    Center(
+      child: FaIcon(
+        FontAwesomeIcons.applePay, color: Colors.cyan, size: 100,
+      ),
+    )
+*/
+
+
+        //position widget to fix a position of widget
+
+        Container(
+        width: 400,
+        height: double.infinity,
+        color: Colors.brown,
+        child: Stack(
+          children: [
+            Positioned(
+              bottom: 44,
+              right: 44,
+              child: Container(
+                width: 100,
+                height: 100,
+                color: Colors.white,
+              ),
+            ),
+
+          ],
+        ),
+      )
+
+
+
+
+
+    );
+  }
+}
