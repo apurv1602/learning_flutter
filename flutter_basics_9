@@ -1,0 +1,140 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Seven'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  var Weight = TextEditingController();
+  var Feet= TextEditingController();
+  var inch= TextEditingController();
+  var bgcolor= Colors.blue.shade100;
+  var result='';
+  @override
+  Widget build(BuildContext context) {
+   return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(widget.title),
+      ),
+      body:
+
+       Container(
+         color: bgcolor,
+         child: Column(
+            children: [
+              const SizedBox(height: 15,),
+               const Text('BMI',style: TextStyle(fontSize: 34,fontWeight: FontWeight.w700),),
+              Padding(
+                padding: const EdgeInsets.only(left: 35,right: 35,bottom: 20,top: 20),
+                child: TextField(
+                  controller: Weight,
+                  decoration: const InputDecoration(
+                    label: Text('enter your weight in kg'),
+                    prefixIcon: Icon(Icons.monitor_weight)
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 35,right: 35,bottom: 20),
+                child: TextField(
+                  controller: Feet,
+                  decoration: const InputDecoration(
+                    label: Text('enter your height  feet'),
+                    prefixIcon: Icon(Icons.height)
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 35,right: 35),
+                child: TextField(
+                  controller: inch,
+                  decoration: const InputDecoration(
+                    label: Text('enter your height inches'),
+                    prefixIcon: Icon(Icons.height)
+                  ),
+                ),
+              ),
+              const SizedBox(height: 50,),
+              ElevatedButton(onPressed: (){
+                var wt= Weight.text.toString();
+                var ft= Feet.text.toString();
+                var ic= inch.text.toString();
+
+                if(wt!=''&& ft!=''&& ic!=''){
+                  var iwt= int.parse(wt);
+                  var ift= int.parse(ft);
+                  var iic= int.parse(ic);
+
+                  var tic= (ift*12) + iic;
+                  var tcm= tic*2.54;
+                  var tm= tcm/100;
+
+                  var bmi= iwt/(tm*tm);
+
+                  var msg ='';
+
+
+                  if(bmi>25){
+                    msg="You're over weight";
+                    bgcolor= Colors.orange.shade200;
+                  }
+                  else if(bmi<18){
+                    msg="You're under weight";
+                    bgcolor= Colors.red.shade200;
+                  }
+                  else{
+                    msg =" you're healthy";
+                    bgcolor= Colors.green.shade200;
+                  }
+                  setState(() {
+                    result='$msg \n BMI : ${bmi.toStringAsFixed(2)}';
+                  });
+                }
+                else{
+                  setState(() {
+                    result='please fill the required blanks!!';
+                  });
+                }
+
+
+              }, child: const Text('calculate')),
+
+              const SizedBox(height: 30,),
+              Text(result,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500),)
+            ],
+          ),
+       ),
+
+
+
+    );
+  }
+}
